@@ -1,3 +1,9 @@
 <span>{{ title }} app is running!</span>
 
+<div>My list of meals
+  <ul>
+    <li>{{meal$ | async}}</li>
+  </ul>
+</div>
+
 <router-outlet></router-outlet>
