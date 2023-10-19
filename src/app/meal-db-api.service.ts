@@ -21,6 +21,16 @@ export class MealDbApiService {
   }
 
   
+  getMealBycategory(category : String) : Observable<Meal[]> {
+    const urlMeal = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+
+    return this.httpClient.get<Payload>(urlMeal)
+      .pipe(map((payload: Payload) => {
+        const {meals} = payload;
+        return meals;
+      }));
+  }
+
 }
 
 export interface Payload {
@@ -29,6 +39,8 @@ export interface Payload {
 
 export interface Meal {
   strMeal : String;
+  idMeal: String;
   strIngredient1: String;
+  strMealThumb: String
   //TODO add explicitly all used fields
 }

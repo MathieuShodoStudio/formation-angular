@@ -1,0 +1,9 @@
+
+<div>Search Meals</div>
+
+
+<div *ngFor="let meal of mealsByCategory$ | async"  (click)="getMeal(meal.idMeal)"  >
+    {{meal.strMeal}} 
+    
+    <img src="{{meal.strMealThumb}}"/> 
+</div>
