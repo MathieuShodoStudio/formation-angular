@@ -30,4 +30,5 @@ export interface Payload {
 export interface Meal {
   strMeal : String;
   strIngredient1: String;
+  //TODO add explicitly all used fields
 }

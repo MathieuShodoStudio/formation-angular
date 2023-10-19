@@ -1,6 +1,6 @@
-<div *ngIf="meal$ | async as meal">
-   <p> Ingredients </p>
+<div *ngIf="ingredients$ | async as measuredIngredients">
+   <p>Ingredients</p>
    <ol>
-      <li>Ingredient 1 : {{meal.strIngredient1}}</li>
+      <li *ngFor="let measuredIngredient of measuredIngredients">{{measuredIngredient.ingredient}} ({{measuredIngredient.measure}})</li>
    </ol>
 </div>
