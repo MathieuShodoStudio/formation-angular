@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MealComponent } from './meal/meal.component';
+import { MyMealsComponent } from './my-meals/my-meals.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MealComponent
+    MealComponent,
+    MyMealsComponent,
   ],
   imports: [
     BrowserModule,

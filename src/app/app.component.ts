@@ -7,16 +7,7 @@ import { MealDbApiService } from './meal-db-api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'formation-angular';
-  mealName$!: Observable<String>;
-
-  constructor(private mealDbApiService: MealDbApiService) {};
-
-  ngOnInit(): void {
-    this.mealName$ = this.mealDbApiService.getMeal(this.idMeal).pipe(map(meal => meal.strMeal));
-  };
-
-  idMeal = '52771';
 }
 

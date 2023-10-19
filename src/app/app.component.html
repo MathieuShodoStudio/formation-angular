@@ -1,12 +1,7 @@
 <span>{{ title }} app is running!</span>
 
-<div>My list of meals
-  <ul>
-    <li>
-      <a [routerLink]="['/meal-detail', idMeal]">
-        {{mealName$ | async}}
-      </a></li>
-  </ul>
+<div>
+  <a routerLink="my-meals">My meals</a>
 </div>
 
 <router-outlet></router-outlet>

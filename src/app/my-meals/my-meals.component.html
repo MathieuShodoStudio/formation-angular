@@ -1,0 +1,8 @@
+<div>My list of meals
+    <ul>
+      <li>
+        <a [routerLink]="['/meal-detail', idMeal]">
+          {{mealName$ | async}}
+        </a></li>
+    </ul>
+  </div>
