@@ -1,7 +1,10 @@
 <div>My list of meals
     <ul>
-      <li *ngIf="meal$ | async as meal">
-        <app-meal-preview [meal]="meal"></app-meal-preview>
+      <li *ngFor="let favoriteMeal$ of (favoriteMeals$ | async)">
+        <ng-container *ngIf="favoriteMeal$ | async as favoriteMeal">
+          <app-meal-preview [meal]="favoriteMeal"></app-meal-preview>
+          <button (click)="removeFavorite(favoriteMeal)">I hate that...</button>
+      </ng-container>
       </li>
     </ul>
   </div>

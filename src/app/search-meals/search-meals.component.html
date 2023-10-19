@@ -8,4 +8,5 @@
 
 <div *ngFor="let meal of mealsByCategory$ | async">
     <app-meal-preview [meal]="meal"></app-meal-preview>
+    <button (click)="addToFavorite(meal)">I love it</button>
 </div>

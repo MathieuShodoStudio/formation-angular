@@ -3,6 +3,7 @@ import { Category, Meal, MealDbApiService } from '../meal-db-api.service';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { FavoriteMealsService } from '../favorite-meals.service';
 
 @Component({
   selector: 'app-search-meals',
@@ -19,8 +20,7 @@ export class SearchMealsComponent implements OnInit, OnDestroy {
 
   mealsByCategory$! : Observable<Meal[]>;
 
-
-  constructor(private mealDbApiService : MealDbApiService, private router: Router) {}
+  constructor(private mealDbApiService : MealDbApiService, private router: Router, private favoriteService: FavoriteMealsService) {}
   
   ngOnInit(): void {
     this.choosenCategoryControl = new FormControl();
@@ -43,5 +43,9 @@ export class SearchMealsComponent implements OnInit, OnDestroy {
 
   loadMeals(): void {
     this.mealsByCategory$ = this.mealDbApiService.getMealBycategory( this.choosenCategoryControl.value);
+  }
+
+  addToFavorite(meal: Meal) {
+    this.favoriteService.addFavorite(meal.idMeal);
   }
 }

@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable, map } from 'rxjs';
 
-const API_BASE_PATH = 'https://www.themealdb.com/api/json/v1/1';
+export const API_BASE_PATH: InjectionToken<string> = new InjectionToken<string>("API_BASE_PATH") ;
 
 @Injectable({
   providedIn: 'root'
 })
 export class MealDbApiService {
 
-  constructor(private readonly httpClient : HttpClient) { }
+  constructor(private readonly httpClient : HttpClient, @Inject(API_BASE_PATH) private basePath :string ) { }
 
-  getMeal(id : String) : Observable<Meal> {
-    const urlMeal = `${API_BASE_PATH}/lookup.php?i=${id}`;
+  getMeal = (id : String) : Observable<Meal> => {
+    const urlMeal = `${this.basePath}/lookup.php?i=${id}`;
 
     return this.httpClient.get<PayloadMeal>(urlMeal)
       .pipe(map((payload: PayloadMeal) => {
@@ -22,15 +22,19 @@ export class MealDbApiService {
       }));
   }
 
+  getMeals(idList: String[]): Observable<Meal>[] {
+    return idList.map(this.getMeal);
+  }
+
   getCategories() : Observable<Category[]> {
-    const url = `${API_BASE_PATH}/list.php?c=list`;
+    const url = `${this.basePath}/list.php?c=list`;
 
     return this.httpClient.get<PayloadCategory>(url)
       .pipe(map(({meals}) => meals));
   }
   
   getMealBycategory(category : Category) : Observable<Meal[]> {
-    const urlMeal = `${API_BASE_PATH}/filter.php?c=${category.strCategory}`;
+    const urlMeal = `${this.basePath}/filter.php?c=${category.strCategory}`;
 
     return this.httpClient.get<PayloadMeal>(urlMeal)
       .pipe(map((payload: PayloadMeal) => {

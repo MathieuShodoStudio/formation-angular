@@ -11,6 +11,8 @@ import { MyMealsComponent } from './my-meals/my-meals.component';
 import { SearchMealsComponent } from './search-meals/search-meals.component';
 import { MealPreviewComponent } from './meal-preview/meal-preview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { API_BASE_PATH } from './meal-db-api.service';
+import { environment } from 'src/environment';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: API_BASE_PATH, useValue: environment.url },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
