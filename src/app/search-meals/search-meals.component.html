@@ -1,5 +1,10 @@
-
 <div>Search Meals</div>
+
+<div>Choose your meal category
+    <select [formControl]="choosenCategoryControl">
+        <option *ngFor="let category of (categories$ | async)" [ngValue]="category">{{category.strCategory}}</option>
+    </select>
+</div>
 
 <div *ngFor="let meal of mealsByCategory$ | async">
     <app-meal-preview [meal]="meal"></app-meal-preview>
