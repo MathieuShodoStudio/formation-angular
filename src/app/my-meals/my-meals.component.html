@@ -1,8 +1,7 @@
 <div>My list of meals
     <ul>
-      <li>
-        <a [routerLink]="['/meal-detail', idMeal]">
-          {{mealName$ | async}}
-        </a></li>
+      <li *ngIf="meal$ | async as meal">
+        <app-meal-preview [meal]="meal"></app-meal-preview>
+      </li>
     </ul>
   </div>

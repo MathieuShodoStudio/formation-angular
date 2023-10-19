@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MealComponent } from './meal/meal.component';
 import { MyMealsComponent } from './my-meals/my-meals.component';
 import { SearchMealsComponent } from './search-meals/search-meals.component';
+import { MealPreviewComponent } from './meal-preview/meal-preview.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SearchMealsComponent } from './search-meals/search-meals.component';
     MealComponent,
     MyMealsComponent,
     SearchMealsComponent,
+    MealPreviewComponent,
   ],
   imports: [
     BrowserModule,

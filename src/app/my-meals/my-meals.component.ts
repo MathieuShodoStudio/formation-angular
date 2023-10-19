@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { MealDbApiService } from '../meal-db-api.service';
+import { Meal, MealDbApiService } from '../meal-db-api.service';
 
 @Component({
   selector: 'app-my-meals',
@@ -10,11 +10,11 @@ import { MealDbApiService } from '../meal-db-api.service';
 export class MyMealsComponent implements OnInit {
   idMeal = '52771';
 
-  mealName$!: Observable<String>;
+  meal$!: Observable<Meal>;
 
   constructor(private mealDbApiService: MealDbApiService) {};
 
   ngOnInit(): void {
-    this.mealName$ = this.mealDbApiService.getMeal(this.idMeal).pipe(map(meal => meal.strMeal));
+    this.meal$ = this.mealDbApiService.getMeal(this.idMeal);
   };
 }

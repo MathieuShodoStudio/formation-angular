@@ -18,9 +18,4 @@ export class SearchMealsComponent implements OnInit {
    this.mealsByCategory$ = this.mealDbApiService.getMealBycategory('Vegetarian');
   }
 
-  getMeal(id : String) {
-      this.router.navigate([`meal-detail/${id}`])
-  }
-
-
 }
