@@ -4,11 +4,11 @@ import { Meal, MealDbApiService } from '../meal-db-api.service';
 import { Observable, map } from 'rxjs';
 
 @Component({
-  selector: 'app-meal',
-  templateUrl: './meal.component.html',
-  styleUrls: ['./meal.component.scss']
+  selector: 'app-meal-details',
+  templateUrl: './meal-details.component.html',
+  styleUrls: ['./meal-details.component.scss']
 })
-export class MealComponent implements OnInit {
+export class MealDetailsComponent implements OnInit {
 
   ingredients$!: Observable<MeasuredIngredient[]>;
 
